@@ -5,10 +5,10 @@ const connection = require('../config/database');
 const doctorsTable = 'doctors';
 const hospitalAdminTable = 'hospital_admin';
 
-}
 /* GET home page. */
 exports.index =  function(req, res, next) {
   res.render('pages/index');
+}
 
 /* POST login user */
 exports.login = function(req, res, next) {
