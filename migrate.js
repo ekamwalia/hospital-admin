@@ -31,7 +31,6 @@ let createAdminTable = `CREATE TABLE hospital_admin(
                       name varchar(50) ,
                       email varchar(50) not null,
                       password varchar(80) not null,
-                      access int,
                       jobType varchar(20) not null
                       )`;
 
