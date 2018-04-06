@@ -1,4 +1,3 @@
-const express = require('express');
 const mysql = require('mysql');
 const connection = require('../config/database');
 const bcrypt = require('bcryptjs');
@@ -11,28 +10,27 @@ const hospitalAdminTable = 'hospital_admin';
 exports.index =  function(req, res) {
   res.render('pages/index');
 }
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 /* POST login user */
-exports.login = function(req, res, next) {
-  if(!req.body.email || !req.body.password  || !req.body.profile)
-    res.status(403).send({success : false , msg : "Bad Request"});
+exports.login = function(req, res) {
+  if(!req.body.email || !req.body.password  || !req.body.profile){
+      res.status(403).send({success : false , msg : "Bad Request"});
+      return
+  }
 
   let table;
   switch(req.body.profile) {
     case 'Doctor' :
-      table = doctorsTable
+      table = doctorsTable;
       break;
     default :
       table = hospitalAdminTable
   }
 
-  let query = `SELECT * from ${table} WHERE email = ?`
+  console.log("Table is  : ", table);
+  let query = `SELECT * from ${table} WHERE email = ?`;
   connection.query(query, [req.body.email], (err, results, fields) => {
     if (err){
-      console.log(err)
       res.render('error', {message : "Internal Server Error", error : err})
       return
     }
@@ -60,11 +58,7 @@ exports.login = function(req, res, next) {
 }
 
 function hashAndComparePasswords(userPassword, enteredPassword, done) {
-  if (userPassword == enteredPassword) {
-    done(null, true);
-    return
-  }
-  done("Random", false);
+  done(null, bcrypt.compareSync(enteredPassword, userPassword))
 }
 
 exports.home = function(req,res) {
@@ -109,9 +103,9 @@ exports.backdoorReg = function(req,res) {
 
   if(req.body.profile == 'Doctor') {
     let query = `INSERT INTO ${doctorsTable} (name,email,password,dept,jobType,visitation) Values (?,?,?,?,?,?)`
-  //  let hash = bcrypt.hashSync(req.body.password, 'mysalt');
+    let hash = bcrypt.hashSync(req.body.password, 8);
 
-   let values = [req.body.name, req.body.email, req.body.password, req.body.dept, 'Doctor', req.body.visitation];
+   let values = [req.body.name, req.body.email, hash, req.body.dept, 'Doctor', req.body.visitation];
 
    connection.query(query, values, (err, results, fields) => {
      if(err)
@@ -122,9 +116,9 @@ exports.backdoorReg = function(req,res) {
    });
  } else {
      let query = `INSERT INTO ${hospitalAdminTable} (name,email,password,jobType) Values (?,?,?,?)`
-    // let hash = bcrypt.hashSync(req.body.password, salt);
+     let hash = bcrypt.hashSync(req.body.password, 8);
 
-     let values = [req.body.name, req.body.email, req.body.password,req.body.profile];
+     let values = [req.body.name, req.body.email, hash,req.body.profile];
 
      connection.query(query, values, (err, results, fields) => {
       if(err)

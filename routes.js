@@ -1,7 +1,12 @@
-const express = require('express')
+const express = require('express');
 const router = express.Router();
 
 const index = require('./routes/index');
+const administrator = require('./routes/administrator');
+const nurse = require('./routes/nurse');
+const doctor = require('./routes/doctors');
+const sysadmin = require('./routes/sysadmin');
+
 
 function isLoggedIn(req, res, next) {
   if(req.session.key) {
@@ -11,8 +16,23 @@ function isLoggedIn(req, res, next) {
   res.redirect('/')
 }
 
-router.get('/',index.index)
-router.post('/login', index.login)
-router.get('/home', isLoggedIn, index.home)
-router.post('/backdoor', index.backdoorReg)
+router.get('/',index.index);
+router.post('/login', index.login);
+router.get('/home', isLoggedIn, index.home);
+router.post('/backdoor', index.backdoorReg);
+
+// Administrator routes
+router.post('/administrator/admitPatient', isLoggedIn, administrator.admitPatient);
+router.get('/administrator/viewPatients', isLoggedIn, administrator.viewPatients);
+router.post('/administrator/dischargeAndGenerateBill', isLoggedIn, administrator.dischargeAndGenerateBill);
+
+// Nurse Routes
+router.get('/nurse/viewPatients/:floor', isLoggedIn, nurse.viewPatientsOnFloor);
+
+// Doctor Routes
+router.get('/doctor/viewPatients', isLoggedIn, doctor.viewPatients);
+
+// Sysadmin Routes
+router.get(/sysadmin/ )
+
 module.exports = router;

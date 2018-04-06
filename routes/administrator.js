@@ -1,6 +1,4 @@
 const connection = require('../config/database');
-const bcrypt = require('bcryptjs');
-
 const doctorsTable = 'doctors';
 const hospitalAdminTable = 'hospital_admin';
 const patientsTable = 'patients';

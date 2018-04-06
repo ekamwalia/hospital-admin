@@ -13,8 +13,8 @@ let createDoctorsTable = `CREATE TABLE doctors(
                       email varchar(50) not null,
                       password varchar(80) not null,
                       dept varchar(20) not null,
-											jobType varchar(20) not null,
-                      visitation numeric(4,2) not null
+					  jobType varchar(20) not null,
+                      visitation numeric(6,2) not null
                       )`;
 
 connection.query(createDoctorsTable , (err , results , fields) => {
@@ -26,12 +26,13 @@ connection.query(createDoctorsTable , (err , results , fields) => {
 
 
 // Hospital Admin Table
-let createAdminTable = `CREATE TABLE hospital_admin(
-                      id int not null primary key auto_increment,
-                      name varchar(50) ,
-                      email varchar(50) not null,
-                      password varchar(80) not null,
-                      jobType varchar(20) not null
+let createAdminTable = `
+                        CREATE TABLE hospital_admin(
+                        id int not null primary key auto_increment,
+                        name varchar(50) ,
+                        email varchar(50) not null,
+                        password varchar(80) not null,
+                        jobType varchar(20) not null
                       )`;
 
 connection.query(createAdminTable , (err , results , fields) => {
@@ -43,14 +44,13 @@ connection.query(createAdminTable , (err , results , fields) => {
 
 
 // Rooms Table
-let createRoomsTable = `CREATE TABLE rooms(
-                      room_num int not null,
-											building varchar(10) not null,
-											floor int not null,
-                      department varchar(20) not null,
-											occupancy int not null,
-											occupied bool  default 0,
-                      cost numeric(4,2) not null
+let createRoomsTable = `
+                        CREATE TABLE rooms(
+                        room_num int not null,
+                        department varchar(20) not null,
+					    occupancy int not null,
+					    occupied bool  default 0,
+                        cost numeric(6,2) not null
                       )`;
 
 connection.query(createRoomsTable , (err , results , fields) => {
@@ -61,17 +61,19 @@ connection.query(createRoomsTable , (err , results , fields) => {
 });
 
 // Rooms Table
-let createPatientsTable = `CREATE TABLE patients(
-                      id int not null primary key auto_increment,
-                      name varchar(20) not null,
-                      email varchar(20) not null,
-                      phone varchar(10) not null,
-											gender  varchar(1) not null,
-											age int not null,
-                      room_num varchar(10) not null,
-                      doctor_id int not null,
-											date_admission date not null,
-											date_discharge date
+let createPatientsTable = ` 
+                            CREATE TABLE patients(
+                            id int not null primary key auto_increment,
+                            name varchar(20) not null,
+                            email varchar(20) not null,
+                            phone varchar(10) not null,
+                            gender  varchar(1) not null,
+                            age int not null,
+                            room_num varchar(10) not null,
+                            dept varchar(10) not null,
+                            doctor_id int not null,
+                            date_admission date not null,
+                            date_discharge date
                       )`;
 
 connection.query(createPatientsTable , (err , results , fields) => {
