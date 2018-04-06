@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/viewpatient.css' />
+  </head>
+  <body>
+  	<div class="header">
+    	<h1>Patient List</h1>
+    </div>
+    <div class="content">
+    <table>
+    	<tr>
+    		<th>ID</th>
+    		<th>Name</th>
+    		<th>Room</th>
+        <th>Doctor</th>
+        <th>Dept</th>
+    	</tr>
+    	<% for(var i=0;i<data.length;i++){ %>
+		    <tr>
+		    	<td><%= data[i].patient_id %></td>
+		    	<td><%= data[i].patient_name %></td>
+		    	<td><%= data[i].room_num %></td>
+		    	<td><%= data[i].doctor_name %></td>
+          <td><%= data[i].dept %></td>
+		      <td><a href="/administrator/dischargeAndGenerateBill">Discharge</a></td>
+        </tr>
+	    <% } %>
+    </table>
+    </div>
+  </body>
+</html>

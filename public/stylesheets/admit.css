@@ -1,0 +1,69 @@
+@font-face {
+	font-family: "monteserrat";
+	src: url('../fonts/Montserrat-Light.ttf');
+}
+
+body {
+	font: 20px "monteserrat", Helvetica, Arial, sans-serif;
+	margin: 0;
+	margin-top: -2.25%;
+}
+
+.header{
+	background-color: #24292E;
+	padding-top: 2%;
+	padding-bottom: 1%;
+	height: 100%;
+	border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px 18px #888888;
+}
+
+h1{
+	padding-top: 1%;
+	text-align: center;
+	font-size: 40px;
+	color: white;
+}
+
+.content{
+	width: 100%;
+	height: 100%;
+}
+
+.form{
+	width: 30%;
+	height: 30%;
+	padding-left: 35%;
+	padding-top: 2.5%;
+	padding-bottom: 5%;
+}
+
+input{
+	margin-top: 2.5%;
+	margin-bottom: 2.5%;
+	padding-bottom: 2%;
+	padding-top: 2%;
+	width: 100%;
+}
+
+button{
+	margin-top: 2.5%;
+	width: 104%;
+	padding-top: 3%;
+	padding-bottom: 3%;
+	background-color: #D3D3D3;
+	border-radius: 5px;
+	text-decoration: none;
+	border: none;
+	transition: 1s;
+}
+
+button:hover{
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	transition: 1s;
+}
+
+a {
+  color: #00B7FF;
+}

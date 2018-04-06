@@ -22,7 +22,7 @@ exports.home = function (req, res) {
                 return
             }
             data['admins'] = results;
-            res.send(data);
+            res.render('pages/employees',{doctors:data['doctors'],admins:data['admins']});
         });
 
     });
@@ -40,7 +40,7 @@ exports.addNewEmp = function(req, res) {
         let query = `INSERT INTO ${doctorsTable} (name,email,password,dept,jobType,visitation) Values (?,?,?,?,?,?)`;
         let hash = bcrypt.hashSync(req.body.password, 8);
 
-        let values = [req.body.name, req.body.email, hash, req.body.dept, 'Doctor', req.body.visitation];
+        let values = [req.body.name, req.body.email, hash, req.body.dept, 'Doctor', req.body.salary];
 
         connection.query(query, values, (err, results, fields) => {
             if(err)

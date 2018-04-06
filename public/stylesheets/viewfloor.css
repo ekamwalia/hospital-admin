@@ -40,14 +40,29 @@ tr{
 }
 
 th{
-	padding-top: 2.5%;
+	padding-top: 5.5%;
 	padding-bottom: 1.5%;
 }
 
 td{
-	width: 25%;
-	padding-right: 10%;
-	padding-left: 10%;
+	width: 20%;
+	padding-right: 5%;
+	padding-left: 8%;
 	padding-top: 1.5%;
 	padding-bottom: 1.5%;
+}
+
+
+a{
+	text-decoration: none;
+	color: black;
+	background-color:#ADD8E6;
+	border-radius: 5px;
+	padding: 5px;
+	transition: 1s;
+}
+
+a:hover{
+	background-color: #F62217;
+	transition: 1s;
 }

@@ -5,7 +5,7 @@ const patientsTable = 'patients';
 
 exports.viewPatientsOnFloor = function(req, res) {
     let query = `
-                 Select patients.id as patient_id, patients.name as patient_name, patients.room_num, doctors.name as doctor_name, doctors.dept, date_admission 
+                 Select patients.id as patient_id, patients.name as patient_name, patients.room_num as room, doctors.name as doctor_name, doctors.dept, date_admission 
                  FROM patients Inner Join doctors ON doctors.id = patients.doctor_id
                  INNER JOIN rooms on patients.room_num = rooms.room_num
                  Where  rooms.floor = ?   
@@ -17,6 +17,10 @@ exports.viewPatientsOnFloor = function(req, res) {
             return
         }
 
-        res.send({success : true, data : results})
+        res.render('pages/viewfloor',{data:results});
     });
 };
+
+exports.home = function(req,res){
+    res.render('pages/nursesHome');
+}

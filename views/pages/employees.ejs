@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/viewpatient.css' />
+  </head>
+  <body>
+  	<div class="header">
+    	<h1>Employee List</h1>
+    </div>
+    <div class="content">
+    <h2>Doctors</h2>
+    <table>
+    	<tr>
+    		<th>Name</th>
+    		<th>Email</th>
+    		<th>Department</th>
+        <th>Visitation</th>
+    	</tr>
+    	<% for(var i=0;i<doctors.length;i++){ %>
+		    <tr>
+		    	<td><%= doctors[i].name %></td>
+		    	<td><%= doctors[i].email %></td>
+		    	<td><%= doctors[i].dept %></td>
+		    	<td><%= doctors[i].visitation %></td>
+        </tr>
+	    <% } %>
+    </table>
+    <h2>Administrators</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Job Type</th>
+        <th>Salary</th>
+      </tr>
+      <% for(var i=0;i<admins.length;i++){ %>
+        <tr>
+          <td><%= admins[i].name %></td>
+          <td><%= admins[i].email %></td>
+          <td><%= admins[i].jobType %></td>
+          <td><%= admins[i].salary %></td>
+        </tr>
+      <% } %>
+    </table>
+    </div>
+  </body>
+</html>

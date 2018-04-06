@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="/stylesheets/admit.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Admit Patient</h1>
+    </div>
+    <div class="form">
+        <form action="/administrator/admitPatient" method="post">
+            <label>Name</label>
+            <input type="text" name="name" required>
+            <label>Email</label>
+            <input type="text" name="email" required>
+            <label>Gender</label>
+            <input type="text" name="gender">
+            <label>Age</label>
+            <input type="number" name="age">
+            <label>Phone</label>
+            <input type="text" name="phone">
+            <label>Room Number</label>
+            <input type="number" name="room_num">
+            <label>Doctor ID</label>
+            <input type="text" name="doctor_id">
+            <button type="submit">Admit Patient</button>
+        </form>
+    </div>
+</body>
+</html>

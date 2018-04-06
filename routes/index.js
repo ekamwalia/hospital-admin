@@ -79,11 +79,11 @@ exports.home = function(req,res) {
 
   } else if(req.session.key.jobType === 'Administrator') {
 
-    res.render('pages/adminHome')
+    res.redirect('/administrator/viewpatients');
 
   } else if(req.session.key.jobType === 'Nurse') {
 
-        res.render('pages/nursesHome')
+        res.redirect('/nurse/home');
 
   } else if(req.session.key.jobType === 'Sysadmin') {
 

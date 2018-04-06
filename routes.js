@@ -30,11 +30,13 @@ router.get('/home', isLoggedIn, index.home);
 router.post('/backdoor', index.backdoorReg);
 
 // Administrator routes
+router.get('/administrator/admitPatient',isLoggedIn,administrator.admitPatient);
 router.post('/administrator/admitPatient', isLoggedIn, administrator.admitPatient);
 router.get('/administrator/viewPatients', isLoggedIn, administrator.viewPatients);
 router.post('/administrator/dischargeAndGenerateBill', isLoggedIn, administrator.dischargeAndGenerateBill);
 
 // Nurse Routes
+router.get('/nurse/home',isLoggedIn,nurse.home);
 router.get('/nurse/viewPatients/:floor', isLoggedIn, nurse.viewPatientsOnFloor);
 
 // Doctor Routes
