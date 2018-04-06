@@ -39,6 +39,8 @@ exports.login = function(req, res) {
       return
     }
     else {
+      console.log(results[0]);
+      console.log(req.body.password);
       hashAndComparePasswords(results[0].password, req.body.password, (err, match) => {
         if(err) {
           res.render('error', {message : "Internal Server Error", error : err})
@@ -70,7 +72,8 @@ exports.home = function(req,res) {
       else if(results.length == 0)
         res.render('pages/doctorsHome', {message : "No patients found"})
       else {
-        res.render('pages/doctorsHome', {patiets : results})
+        console.log(results);
+        res.render('pages/doctorsHome', {patients : results})
       }
     });
 
@@ -87,7 +90,7 @@ exports.home = function(req,res) {
       else if(results.length == 0)
         res.render('pages/nursesHome', {message : "No patients found on this floor"})
       else {
-        res.render('pages/nursesHome', {patiets : results})
+        res.render('pages/nursesHome', {patients : results})
       }
     });
   } else if(req.session.key.jobType == 'Sysadmin') {

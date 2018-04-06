@@ -1,0 +1,49 @@
+@font-face {
+	font-family: "monteserrat";
+	src: url('../fonts/Montserrat-Light.ttf');
+}
+
+body {
+	font: 20px "monteserrat", Helvetica, Arial, sans-serif;
+	margin: 0;
+	margin-top: -2.25%;
+}
+
+.header{
+	background-color: #24292E;
+	padding-top: 2%;
+	padding-bottom: 1%;
+	height: 100%;
+}
+
+h1{
+	text-align: center;
+	font-size: 40px;
+	color: white;
+}
+
+.content{
+	width: 70%;
+	height: 100%;
+	margin-left: 15%;
+}
+
+table{
+	width: 100%;
+}
+tr{
+	width: 100%;
+}
+
+th{
+	padding-top: 2.5%;
+	padding-bottom: 1.5%;
+}
+
+td{
+	width: 25%;
+	padding-right: 10%;
+	padding-left: 10%;
+	padding-top: 1.5%;
+	padding-bottom: 1.5%;
+}

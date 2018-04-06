@@ -3,8 +3,29 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel='stylesheet' href='/stylesheets/doctors.css' />
   </head>
   <body>
-    <h1>Doctors Home</h1><br>
+  	<div class="header">
+    	<h1>Doctor's Home</h1>
+    </div>
+    <div class="content">
+    <table>
+    	<tr>
+    		<th>Name</th>
+    		<th>Age</th>
+    		<th>Gender</th>
+    		<th>Room</th>
+    	</tr>
+    	<% for(var i=0;i<patients.length;i++){ %>
+		    <tr>
+		    	<td><%= patients[i].name %></td>
+		    	<td><%= patients[i].age %></td>
+		    	<td><%= patients[i].gender %></td>
+		    	<td><%= patients[i].room_num %></td>
+		    </tr>
+	    <% } %>
+    </table>
+    </div>
   </body>
 </html>

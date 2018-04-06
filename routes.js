@@ -5,7 +5,7 @@ const index = require('./routes/index');
 const administrator = require('./routes/administrator');
 const nurse = require('./routes/nurse');
 const doctor = require('./routes/doctors');
-const sysadmin = require('./routes/sysadmin');
+// const sysadmin = require('./routes/sysadmin');
 
 
 function isLoggedIn(req, res, next) {
