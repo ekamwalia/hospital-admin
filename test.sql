@@ -31,7 +31,7 @@ CREATE TABLE `doctors` (
   `jobType` varchar(20) NOT NULL,
   `visitation` decimal(6,2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `doctors` (
 
 LOCK TABLES `doctors` WRITE;
 /*!40000 ALTER TABLE `doctors` DISABLE KEYS */;
-INSERT INTO `doctors` VALUES (1,'D1','d1','$2a$08$LZrIhudzkDhrQ1SWNpcmje5RJKSWILyG.LUKOcwIE7Pj.TZlQiEK2','Neurology','Doctor',423.54);
+INSERT INTO `doctors` VALUES (1,'D1','d1','$2a$08$LZrIhudzkDhrQ1SWNpcmje5RJKSWILyG.LUKOcwIE7Pj.TZlQiEK2','Neurology','Doctor',423.54),(2,'D2','D2','$2a$08$Ac2s5bw/exSACM5PItOcYOzGnpoqiKzD2mw/JA2fyhcqcHUUe0xnS','Oncology','Doctor',78.63),(3,'D2','D2','$2a$08$o/WeBpEQQL4ZmrV4Ja9Axu7GRogRbkcxfK5F0Ch/9fGPNU5slcO7u','Oncology','Doctor',78.63);
 /*!40000 ALTER TABLE `doctors` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +92,7 @@ CREATE TABLE `patients` (
   `date_admission` date NOT NULL,
   `date_discharge` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,6 +101,7 @@ CREATE TABLE `patients` (
 
 LOCK TABLES `patients` WRITE;
 /*!40000 ALTER TABLE `patients` DISABLE KEYS */;
+INSERT INTO `patients` VALUES (1,'P1','P1','9973430184','M',18,'123','Neurology',1,'2018-04-06','2018-04-06');
 /*!40000 ALTER TABLE `patients` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,7 +116,8 @@ CREATE TABLE `rooms` (
   `room_num` int(11) NOT NULL,
   `building` varchar(20) NOT NULL,
   `occupancy` int(11) NOT NULL,
-  `cost` decimal(6,2) NOT NULL
+  `cost` decimal(6,2) NOT NULL,
+  `floor` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -125,6 +127,7 @@ CREATE TABLE `rooms` (
 
 LOCK TABLES `rooms` WRITE;
 /*!40000 ALTER TABLE `rooms` DISABLE KEYS */;
+INSERT INTO `rooms` VALUES (123,'B1',2,20.00,1),(223,'B1',1,30.00,2),(302,'B2',1,40.00,3);
 /*!40000 ALTER TABLE `rooms` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -137,4 +140,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-06 11:22:36
+-- Dump completed on 2018-04-06 11:51:39

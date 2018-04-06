@@ -48,6 +48,7 @@ connection.query(createAdminTable , (err , results , fields) => {
 let createRoomsTable = `
                         CREATE TABLE rooms(
                         room_num int not null,
+                        floor int not null
                         building varchar(20) not null,
 					    occupancy int not null,
                         cost numeric(6,2) not null

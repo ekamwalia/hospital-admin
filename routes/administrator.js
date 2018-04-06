@@ -1,10 +1,11 @@
+const connection = require('../config/database');
 const doctorsTable = 'doctors';
 const hospitalAdminTable = 'hospital_admin';
 const patientsTable = 'patients';
 
 exports.admitPatient = function(req,res) {
-    let query = `INSERT INTO ${patientsTable} (name, email, gender, age, phone, room_num, doctor_id, date_admission) values (?,?,?,?,?,?,?,now())`;
-    let values = [req.body.name, req.body.email, req.body.gender, req.body.age, req.body.phone, req.body.room_num, req.body.doctor_id];
+    let query = `INSERT INTO ${patientsTable} (name, email, gender, age, phone, dept, room_num, doctor_id, date_admission) values (?,?,?,?,?,?,?,?,now())`;
+    let values = [req.body.name, req.body.email, req.body.gender, req.body.age, req.body.phone, req.body.dept,req.body.room_num, req.body.doctor_id];
 
     connection.query(query, values, (err, results, fields) => {
       if(err){

@@ -15,7 +15,7 @@ exports.home = function (req, res) {
 
         let data  = {doctors : results};
 
-        let adminsQuery = `Select name, email, jobType  from hospital_admin Order By jobtype, name asc`
+        let adminsQuery = `Select name, email, jobType, salary  from hospital_admin Order By jobtype, name asc`
         connection.query(adminsQuery, (err, results, fields) => {
             if(err) {
                 res.render('error', {message : "Internal Server Error", error : err})
@@ -46,7 +46,7 @@ exports.addNewEmp = function(req, res) {
             if(err)
                 res.render('error', {message : "Internal Server Error", error : err})
             else {
-                res.redirect('/');
+                res.redirect('/sysadmin/home');
             }
         });
     } else {
@@ -59,7 +59,7 @@ exports.addNewEmp = function(req, res) {
             if(err)
                 res.render('error', {message : "Internal Server Error", error : err});
             else {
-                res.redirect('/');
+                res.redirect('/sysadmin/home');
             }
         });
     }
