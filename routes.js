@@ -16,6 +16,14 @@ function isLoggedIn(req, res, next) {
   res.redirect('/')
 }
 
+function isSysAdmin(req, res, next) {
+    if(req.session.key && req.session.key.jobType === 'Sysadmin') {
+        next();
+        return
+    }
+    res.redirect('/')
+}
+
 router.get('/',index.index);
 router.post('/login', index.login);
 router.get('/home', isLoggedIn, index.home);
@@ -33,6 +41,8 @@ router.get('/nurse/viewPatients/:floor', isLoggedIn, nurse.viewPatientsOnFloor);
 router.get('/doctor/viewPatients', isLoggedIn, doctor.viewPatients);
 
 // Sysadmin Routes
-router.get(/sysadmin/ )
+router.get('/sysadmin/home', isSysAdmin, sysadmin.home);
+router.get('/sysadmin/addNewEmp', isSysAdmin, sysadmin.addNewEmpPage);
+router.post('/sysadmin/addNewEmp', isSysAdmin, sysadmin.addNewEmp);
 
 module.exports = router;

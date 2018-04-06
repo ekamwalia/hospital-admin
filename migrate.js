@@ -19,7 +19,7 @@ let createDoctorsTable = `CREATE TABLE doctors(
 
 connection.query(createDoctorsTable , (err , results , fields) => {
   if(err)
-    return console.error("ERROR : Error creating table " + err)
+    return console.error("ERROR : Error creating table " + err);
 
   console.log("SUCCESS : Doctors Table Created")
 });
@@ -32,7 +32,8 @@ let createAdminTable = `
                         name varchar(50) ,
                         email varchar(50) not null,
                         password varchar(80) not null,
-                        jobType varchar(20) not null
+                        jobType varchar(20) not null,
+                        salary numeric(10,2) not null
                       )`;
 
 connection.query(createAdminTable , (err , results , fields) => {
@@ -47,9 +48,8 @@ connection.query(createAdminTable , (err , results , fields) => {
 let createRoomsTable = `
                         CREATE TABLE rooms(
                         room_num int not null,
-                        department varchar(20) not null,
+                        building varchar(20) not null,
 					    occupancy int not null,
-					    occupied bool  default 0,
                         cost numeric(6,2) not null
                       )`;
 

@@ -77,26 +77,22 @@ exports.home = function(req,res) {
       }
     });
 
-  } else if(req.session.key.jobType == 'Administrator') {
-    res.render('pages/adminHome')
-  } else if(req.session.key.jobType == 'Nurse') {
-    let query = `SELECT name, age, gender, date_admission, room_num FROM patients WHERE room_num IN
-                    (SELECT room_num  FROM rooms WHERE floor = ?)
-                `;
+  } else if(req.session.key.jobType === 'Administrator') {
 
-    connection.query(query, [req.body.floor], (err, results, field) => {
-      if(err)
-        res.render('error', {message : "Internal Server Error"})
-      else if(results.length == 0)
-        res.render('pages/nursesHome', {message : "No patients found on this floor"})
-      else {
-        res.render('pages/nursesHome', {patients : results})
-      }
-    });
-  } else if(req.session.key.jobType == 'Sysadmin') {
+    res.render('pages/adminHome')
+
+  } else if(req.session.key.jobType === 'Nurse') {
+
+        res.render('pages/nursesHome')
+
+  } else if(req.session.key.jobType === 'Sysadmin') {
+
       res.render('pages/sysadmin');
+
   } else{
+
     res.render('error', {message : "Internal Server Error", error : null});
+
   }
 }
 
@@ -105,7 +101,7 @@ exports.backdoorReg = function(req,res) {
     res.render('/error', {message : "Bad Request"});
 
   if(req.body.profile == 'Doctor') {
-    let query = `INSERT INTO ${doctorsTable} (name,email,password,dept,jobType,visitation) Values (?,?,?,?,?,?)`
+    let query = `INSERT INTO ${doctorsTable} (name,email,password,dept,jobType,visitation) Values (?,?,?,?,?,?)`;
     let hash = bcrypt.hashSync(req.body.password, 8);
 
    let values = [req.body.name, req.body.email, hash, req.body.dept, 'Doctor', req.body.visitation];
@@ -118,17 +114,17 @@ exports.backdoorReg = function(req,res) {
       }
    });
  } else {
-     let query = `INSERT INTO ${hospitalAdminTable} (name,email,password,jobType) Values (?,?,?,?)`
+     let query = `INSERT INTO ${hospitalAdminTable} (name,email,password,jobType, salary) Values (?,?,?,?,?)`;
      let hash = bcrypt.hashSync(req.body.password, 8);
 
-     let values = [req.body.name, req.body.email, hash,req.body.profile];
+     let values = [req.body.name, req.body.email, hash,req.body.profile, req.body.salary];
 
      connection.query(query, values, (err, results, fields) => {
       if(err)
-       res.render('error', {message : "Internal Server Error", error : err})
+       res.render('error', {message : "Internal Server Error", error : err});
        else {
          res.redirect('/');
        }
     });
    }
-}
+};

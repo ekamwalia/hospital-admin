@@ -1,4 +1,3 @@
-const connection = require('../config/database');
 const doctorsTable = 'doctors';
 const hospitalAdminTable = 'hospital_admin';
 const patientsTable = 'patients';
