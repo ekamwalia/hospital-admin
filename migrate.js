@@ -27,14 +27,14 @@ connection.query(createDoctorsTable , (err , results , fields) => {
 
 // Hospital Admin Table
 let createAdminTable = `
-                        CREATE TABLE hospital_admin(
-                        id int not null primary key auto_increment,
-                        name varchar(50) ,
-                        email varchar(50) not null,
-                        password varchar(80) not null,
-                        jobType varchar(20) not null,
-                        salary numeric(10,2) not null
-                      )`;
+                          CREATE TABLE hospital_admin(
+                          id int not null primary key auto_increment,
+                          name varchar(50) ,
+                          email varchar(50) not null,
+                          password varchar(80) not null,
+                          jobType varchar(20) not null,
+                          salary numeric(10,2) not null
+                        )`;
 
 connection.query(createAdminTable , (err , results , fields) => {
   if(err)

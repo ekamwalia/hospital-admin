@@ -8,7 +8,7 @@ exports.viewPatientsOnFloor = function(req, res) {
                  Select patients.id as patient_id, patients.name as patient_name, patients.room_num as room, doctors.name as doctor_name, doctors.dept, date_admission 
                  FROM patients Inner Join doctors ON doctors.id = patients.doctor_id
                  INNER JOIN rooms on patients.room_num = rooms.room_num
-                 Where  rooms.floor = ?   
+                 Where  rooms.floor = ? 
                 `;
 
     connection.query(query, req.params.floor, (err, results, fields) => {

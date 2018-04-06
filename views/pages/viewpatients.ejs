@@ -25,10 +25,18 @@
 		    	<td><%= data[i].room_num %></td>
 		    	<td><%= data[i].doctor_name %></td>
           <td><%= data[i].dept %></td>
-		      <td><a href="/administrator/dischargeAndGenerateBill">Discharge</a></td>
         </tr>
 	    <% } %>
     </table>
+    </div>
+    <div>
+      <div class="form">
+        <form action="/administrator/dischargeAndGenerateBill" method="post">
+            <label>Discharge Patient</label>
+            <input type="text" name="patient_id" required>
+            <button type="submit">Discharge</button>
+        </form>
+    </div>
     </div>
   </body>
 </html>

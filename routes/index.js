@@ -83,7 +83,7 @@ exports.home = function(req,res) {
 
   } else if(req.session.key.jobType === 'Nurse') {
 
-        res.redirect('/nurse/home');
+        res.redirect('/nurse/viewPatients/1');
 
   } else if(req.session.key.jobType === 'Sysadmin') {
 
