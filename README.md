@@ -1,4 +1,4 @@
-# Hostpial Admin
+# Hospital Admin
 
 A web application that can be utilized to manage the general administration of a hospital such as admitting, discharging and billing patients. 
 
